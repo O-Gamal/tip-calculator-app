@@ -23,6 +23,7 @@
   padding: 2rem;
   display: flex;
   flex-direction: column;
+  max-width: 1000px;
 }
 
 .tip-perc-group {
@@ -82,7 +83,7 @@ h4 span {
   color: var(--very-dark-cyan);
   padding: 0.8rem;
   border-radius: 0.5rem;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   margin-top: 0.8rem;
 }
 

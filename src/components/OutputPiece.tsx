@@ -11,7 +11,7 @@ const OutputPiece = ({ title, tag, price }: OutputPieceProps) => {
         {title}
         <span>{tag}</span>
       </h4>
-      <h1>${price.toFixed(2)}</h1>
+      <h1>${price ? price.toFixed(2) : '0.00'}</h1>
     </div>
   );
 };

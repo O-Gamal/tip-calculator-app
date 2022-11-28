@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import {
   CurrencyDollarIcon,
   UserCircleIcon,
@@ -6,15 +5,27 @@ import {
 
 const tipPercentages = [5, 10, 15, 25, 50];
 
-const InputPanel = () => {
-  const [tipPerc, setTipPerc] = useState<number | null>(null);
+interface InputPanelProps {
+  setBill: React.Dispatch<React.SetStateAction<number>>;
+  bill: number;
+  setTip: React.Dispatch<React.SetStateAction<number>>;
+  tip: number;
+  setNumberOfPeople: React.Dispatch<React.SetStateAction<number>>;
+  numberOfPeople: number;
+}
 
-  const handleTipPercentage = (e: React.MouseEvent<HTMLButtonElement>) => {
+const InputPanel = ({
+  setBill,
+  bill,
+  setTip,
+  tip,
+  setNumberOfPeople,
+  numberOfPeople,
+}: InputPanelProps) => {
+  const handleTipSelect = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setTipPerc(+e.target.value);
+    setTip(+e.target.value);
   };
-
-  useEffect(() => console.log(tipPerc), [tipPerc]);
 
   return (
     <section className='input-panel panel'>
@@ -28,6 +39,10 @@ const InputPanel = () => {
             name='bill'
             id='bill'
             placeholder='0'
+            value={bill}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+              setBill(+e.target.value >= 0 ? +e.target.value : 0);
+            }}
           />
         </div>
 
@@ -36,11 +51,9 @@ const InputPanel = () => {
           {tipPercentages.map((perc) => (
             <button
               key={perc}
-              className={`${
-                perc === tipPerc ? 'tip-perc selected' : 'tip-perc'
-              }`}
+              className={`${perc === tip ? 'tip-perc selected' : 'tip-perc'}`}
               value={perc}
-              onClick={handleTipPercentage}
+              onClick={handleTipSelect}
             >
               {perc}%
             </button>
@@ -51,10 +64,11 @@ const InputPanel = () => {
             name='tip'
             id='tip'
             placeholder='Custom'
-            onFocus={() => setTipPerc(null)}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setTipPerc(+e.target.value)
-            }
+            // onFocus={() => setTip(NaN)}
+            value={tip}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+              setTip(+e.target.value >= 0 ? +e.target.value : 0);
+            }}
           />
         </div>
 
@@ -67,6 +81,10 @@ const InputPanel = () => {
             name='number-of-people'
             id='number-of-people'
             placeholder='0'
+            value={numberOfPeople}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+              setNumberOfPeople(+e.target.value >= 1 ? +e.target.value : 1);
+            }}
           />
         </div>
       </form>
