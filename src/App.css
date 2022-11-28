@@ -1,41 +1,136 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+.App {
   text-align: center;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr 7fr;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  color: var(--very-dark-cyan);
+  text-transform: uppercase;
+  letter-spacing: 10px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.calculator-body {
+  border-radius: 1rem;
+  background-color: var(--white);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.tip-perc-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+}
+
+.tip-perc {
+  background-color: var(--very-dark-cyan);
+  color: var(--white);
+}
+
+.tip-perc,
+.tip-custom-input {
+  border-radius: 0.5rem;
+  padding: 0.8rem;
+  font-size: 1.5rem;
+}
+
+.tip-custom-input {
+  text-align: center;
+}
+
+.output-panel {
+  background-color: var(--very-dark-cyan);
+  border-radius: 1rem;
+  padding: 1.6rem;
+}
+
+.output-piece {
+  padding: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.output-piece h4 {
+  color: var(--white);
+  line-height: 1.2rem;
+  text-align: left;
+}
+
+.output-piece h1 {
+  color: var(--strong-cyan);
+  font-size: 2.2rem;
+}
+
+h4 span {
+  display: block;
+  color: var(--grayish-cyan);
+}
+
+.reset-button {
+  background-color: var(--strong-cyan);
+  width: 100%;
+  text-transform: uppercase;
+  color: var(--very-dark-cyan);
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+  margin-top: 0.8rem;
+}
+
+.input-container {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.input-icon {
+  width: 1.6rem;
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  color: var(--grayish-cyan);
+}
+
+@media (min-width: 700px) {
+  .App {
+    height: auto;
+    gap: 5rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  .logo {
+    font-size: 2rem;
+    line-height: 2rem;
   }
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  .calculator-body {
+    flex-direction: row;
+    gap: 2rem;
   }
-}
 
-.card {
-  padding: 2em;
-}
+  .panel {
+    width: 50%;
+  }
 
-.read-the-docs {
-  color: #888;
+  .output-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .output-piece {
+    margin-bottom: 0.5rem;
+  }
+
+  .output-piece h1 {
+    font-size: 3rem;
+  }
 }
