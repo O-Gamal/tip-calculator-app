@@ -27,7 +27,7 @@ const InputPanel = ({
   setNumberOfPeople,
   numberOfPeople,
 }: InputPanelProps) => {
-  const handleTipSelect = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleTipSelect = (e: any) => {
     e.preventDefault();
     setCustomTip(NaN);
     setTip(+e.target.value);
