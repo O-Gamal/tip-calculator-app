@@ -18,7 +18,7 @@
 }
 
 .calculator-body {
-  border-radius: 1rem 1rem 0 0;
+  border-radius: 1.5rem 1.5rem 0 0;
   background-color: var(--white);
   padding: 2rem;
   display: flex;
@@ -127,7 +127,7 @@ h4 span {
   }
 
   .calculator-body {
-    border-radius: 1rem;
+    border-radius: 1.5rem;
     flex-direction: row;
     gap: 2rem;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
