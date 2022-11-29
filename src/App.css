@@ -1,8 +1,7 @@
 .App {
   text-align: center;
   height: 100vh;
-  display: grid;
-  grid-template-rows: 1fr 7fr;
+  overflow-x: hidden;
 }
 
 .logo-container {
@@ -15,10 +14,11 @@
   color: var(--very-dark-cyan);
   text-transform: uppercase;
   letter-spacing: 10px;
+  margin: 3rem 0;
 }
 
 .calculator-body {
-  border-radius: 1rem;
+  border-radius: 1rem 1rem 0 0;
   background-color: var(--white);
   padding: 2rem;
   display: flex;
@@ -52,18 +52,21 @@
   background-color: var(--very-dark-cyan);
   border-radius: 1rem;
   padding: 1.6rem;
+  overflow: hidden;
 }
 
 .output-piece {
   padding: 0.8rem;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .output-piece h4 {
   color: var(--white);
   line-height: 1.2rem;
   text-align: left;
+  margin-bottom: 1rem;
 }
 
 .output-piece h1 {
@@ -101,20 +104,33 @@ h4 span {
   color: var(--grayish-cyan);
 }
 
+.output-value {
+  line-break: anywhere;
+  line-height: 3rem;
+  text-align: left;
+}
+
+.error-msg {
+  color: chocolate;
+}
+
 @media (min-width: 700px) {
   .App {
     height: auto;
-    gap: 5rem;
   }
 
   .logo {
     font-size: 2rem;
     line-height: 2rem;
+    margin-top: 0;
+    margin-bottom: 5rem;
   }
 
   .calculator-body {
+    border-radius: 1rem;
     flex-direction: row;
     gap: 2rem;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   }
 
   .panel {

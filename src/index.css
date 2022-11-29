@@ -48,11 +48,36 @@ input {
   text-align: right;
 }
 
+input.error {
+  outline: 2px solid chocolate;
+  color: chocolate;
+}
+
+input.error:focus,
+input.error:focus-visible {
+  outline: 2px solid chocolate;
+}
+
+input:focus,
+input:focus-visible {
+  outline: 2px solid var(--strong-cyan);
+}
+
 button {
   font-weight: 700;
   border: none;
   outline: none;
   cursor: pointer;
+  transition: opacity 400ms;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+button:disabled {
+  opacity: 0.2;
+  cursor: auto;
 }
 
 button.selected {
@@ -63,7 +88,8 @@ button.selected {
 label {
   color: var(--dark-grayish-cyan);
   font-size: 1.2rem;
-  display: block;
+  display: flex;
+  justify-content: space-between;
   text-align: left;
   margin-bottom: 0.8rem;
 }

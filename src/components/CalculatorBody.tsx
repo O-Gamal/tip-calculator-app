@@ -3,23 +3,29 @@ import InputPanel from './InputPanel';
 import OutputPanel from './OutputPanel';
 
 const CalculatorBody = () => {
-  const [bill, setBill] = useState<number>(NaN);
-  const [tip, setTip] = useState<number>(NaN);
-  const [numberOfPeople, setNumberOfPeople] = useState<number>(1);
+  const [bill, setBill] = useState(NaN);
+  const [tip, setTip] = useState(NaN);
+  const [numberOfPeople, setNumberOfPeople] = useState(NaN);
+  const [customTip, setCustomTip] = useState(NaN);
 
   const [tipAmount, setTipAmount] = useState(0);
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    if (tip) {
-      const tipPerc = tip / 100;
-      setTipAmount((tipPerc * bill) / numberOfPeople || tipPerc * bill);
-      setTotal(
-        (bill + tipPerc * bill) / numberOfPeople || bill + tipPerc * bill
-      );
-    } else {
+    if (!numberOfPeople) {
+      setTotal(0);
       setTipAmount(0);
-      setTotal(bill / numberOfPeople || bill);
+    } else {
+      if (tip || customTip) {
+        const tipPerc = (tip || customTip) / 100;
+        setTipAmount((tipPerc * bill) / numberOfPeople || tipPerc * bill);
+        setTotal(
+          (bill + tipPerc * bill) / numberOfPeople || bill + tipPerc * bill
+        );
+      } else {
+        setTipAmount(0);
+        setTotal(bill / numberOfPeople || bill);
+      }
     }
 
     console.log(`
@@ -27,7 +33,8 @@ const CalculatorBody = () => {
       tip: ${tip},
       # of people: ${numberOfPeople}
     `);
-  }, [bill, tip, numberOfPeople]);
+  }, [bill, tip, customTip, numberOfPeople]);
+
   return (
     <section className='calculator-body'>
       <InputPanel
@@ -35,13 +42,20 @@ const CalculatorBody = () => {
         bill={bill}
         setTip={setTip}
         tip={tip}
+        setCustomTip={setCustomTip}
+        customTip={customTip}
         setNumberOfPeople={setNumberOfPeople}
         numberOfPeople={numberOfPeople}
       />
       <OutputPanel
         setBill={setBill}
+        bill={bill}
         setTip={setTip}
+        tip={tip}
+        setCustomTip={setCustomTip}
+        customTip={customTip}
         setNumberOfPeople={setNumberOfPeople}
+        numberOfPeople={numberOfPeople}
         tipAmount={tipAmount}
         total={total}
       />
